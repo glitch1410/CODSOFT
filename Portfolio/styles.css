@@ -1,17 +1,19 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('./images/light_background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh; 
-    overflow: hidden; /* Hide the scrollbar if the content overflows */
 }
 
-.navbar li {
-	display: inline-flex;
-	padding-right: 20px;
+.navbar {
+	/* position: fixed; */
+
+	
+}
+
+
+.navbar a {
+	text-decoration: none;
+	color: black;
+	font-size: larger;
 }
 
 
