@@ -35,11 +35,14 @@ body {
 	background: #2F6690;
 }
 
-.calc_keys button {
+.operator,
+.number, 
+.decimal,
+.clear,
+.equals{
 	font-size: 24px;
-	/* height: 60px; */
 	border-radius: 30px;
-	background: #16425B;
+	background-color: #16425B;
 	cursor: pointer;
 	color: #fff;
 }
@@ -61,4 +64,8 @@ body {
 
 .span-col-2 {
 	grid-row: span 2;
+}
+
+.changeColorEval {
+	background-color: brown;
 }
