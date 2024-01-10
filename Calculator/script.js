@@ -5,7 +5,7 @@ const operationText = document.getElementById('operation-text')
 var equationString = ''
 
 operatorButtons.forEach(i => i.addEventListener('click', function(event){
-	if(display.value != '0'){
+	if( display.value != 'Infinity' && display.value != 'Not Allowed'){
 		operationColor(event)
 		handleOperatorClick(event.target.id)
 	}
@@ -14,10 +14,8 @@ operatorButtons.forEach(i => i.addEventListener('click', function(event){
 keys.addEventListener('click', function(event){
 	var i = event.target.id;
 
-	
-
 	if(event.target.className === 'number'){
-		if(display.value === '0' || display.value === 'Infinity'){
+		if(display.value === '0' || display.value === 'Infinity' || display.value === 'Not Allowed'){
 			display.value = i;
 		}
 		else{
@@ -50,26 +48,57 @@ keys.addEventListener('click', function(event){
 	if(i === '='){
 		handleEqualsClick();
 	}
-
+	if(event.target.tagName === 'BUTTON'){
+		handleClickAnimation(event)
+	}
 });
 
 function handleOperatorClick(optor){
-	equationString = display.value + optor
+	if(equationString === ''){
+		equationString = display.value + optor
+		switch(optor){
+			case '+':
+				operationText.innerHTML = display.value + ' +';
+				break;
+			case '*':
+				operationText.innerHTML = display.value + ' &times';
+				break;
+			case '-':
+				operationText.innerHTML = display.value + ' -';
+				break;
+			case '/':
+				operationText.innerHTML = display.value + ' &divide';
+				break;
+		}
+		display.value = '0';
+	}
+	else{
+		operatorSwitch(optor);
+	}
+}
+
+function operatorSwitch(optor){
+	equationString = equationString.slice(0,-1);
 	switch(optor){
 		case '+':
-			operationText.innerHTML = display.value + ' +';
+			operationText.innerHTML = equationString + ' +';
+			equationString += '+';
 			break;
 		case '*':
-			operationText.innerHTML = display.value + ' &times';
+			operationText.innerHTML = equationString + ' &times';
+			equationString += '*';
 			break;
 		case '-':
-			operationText.innerHTML = display.value + ' -';
+			operationText.innerHTML = equationString + ' -';
+			equationString += '-';
 			break;
 		case '/':
-			operationText.innerHTML = display.value + ' &divide';
+			operationText.innerHTML = equationString + ' &divide';
+			equationString += '/';
 			break;
 	}
 	display.value = '0';
+
 }
 
 function allClear(){
@@ -86,10 +115,26 @@ function operationColor(event){
 
 function handleEqualsClick(){
 	equationString += display.value;
-	display.value = eval(equationString);
+	try{
+		display.value = eval(equationString);
+	} 
+	catch(err){
+		display.value = 'Not Allowed'
+	}
 	equationString = '';
 	operationText.innerHTML = '';
 	operatorButtons.forEach(i => i.classList.remove("changeColorEval"));
+	validateInput(this);
+
+}
+
+function handleClickAnimation(event){
+	
+		event.target.classList.add("button-clicked");
+		setTimeout(() => {
+			event.target.classList.remove("button-clicked");
+		}, 100);
+	
 }
 
 document.addEventListener('keydown', function(event){
@@ -105,7 +150,8 @@ document.addEventListener('keydown', function(event){
 		case '8':
 		case '9':
 		case '0':
-			if(display.value === '0' || display.value === 'Infinity'){
+			event.preventDefault();
+			if(display.value === '0' || display.value === 'Infinity' || display.value === 'Not Allowed'){
 				display.value = j;
 			}
 			else{
@@ -113,6 +159,7 @@ document.addEventListener('keydown', function(event){
 			}
 			break;
 		case 'Enter':
+			event.preventDefault();
 			handleEqualsClick();
 			break;
 		case 'Backspace':
@@ -131,14 +178,15 @@ document.addEventListener('keydown', function(event){
 		case '-':
 		case '*':
 		case '/':
-			if(display.value != '0'){
-				// operationColor(event)
+			if(display.value != 'Infinity' && display.value != 'Not Allowed'){
 				handleOperatorClick(j)
+				operatorSwitch(j)
+			}
+			break;
+		case '.':
+			if(display.value.slice(-1) != '.'){
+				display.value += '.';
 			}
 			break;
 	}
-	
-
-
-
 });

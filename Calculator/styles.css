@@ -20,7 +20,7 @@ body {
 
 .calc {
 	position: absolute;
-	top: 50%;
+	top: 55%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	max-width: 280px;
@@ -51,6 +51,9 @@ body {
 	border-radius: 30px;
 	cursor: pointer;
 	color: black;
+	outline: none;
+	border: none;
+	transition: opacity 0.1s ease-in-out;
 }
 
 .allclear,
@@ -65,7 +68,8 @@ body {
 	background-color: #F7EFE5;
 }
 .equals{
-	background-color: #FFDF94;
+	background-color: #f8cd69;
+
 }
 
 
@@ -108,4 +112,8 @@ body {
 
 .calc_keys button:hover {
 	background-color: #b4acac;
+}
+
+.button-clicked {
+	opacity: 0;
 }
