@@ -1,0 +1,42 @@
+body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	
+}
+
+.navbar {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	font-size: 20px;
+	background-color: #ffffff;
+}
+
+.navbar ul{
+	list-style-type: none;
+	display: flex;
+	justify-content:space-around;
+	align-items: center;
+}
+
+.navbar a, img, li{
+	text-decoration: none;
+	color: #000;
+	padding-left: 10px;
+	padding-right: 10px;
+	/* margin-right: 10px; */
+	cursor: pointer;
+}
+
+.logo {
+	width: 80px;
+}
+
+.home {
+	margin-top: 10vh;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
