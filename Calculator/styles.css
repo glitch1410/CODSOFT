@@ -31,8 +31,8 @@ body {
 	display: grid;
 	gap: 5px;
 	grid-template-columns: repeat(4, 1fr);
-	padding: 10px;
 	grid-template-rows: repeat(5, 60px);
+	padding: 10px;
 	background: #fff;
 	border-bottom-left-radius: 30px;
 	border-bottom-right-radius: 30px;
@@ -48,6 +48,7 @@ body {
 .allclear,
 .equals{
 	font-size: 24px;
+	font-weight: 700;
 	border-radius: 30px;
 	cursor: pointer;
 	color: black;
@@ -79,6 +80,7 @@ body {
 	padding-left: 10px;
 	padding-right: 10px;
 	font-size: 36px;
+	font-weight: 700;
 	background-color: #fadeae;
 	text-align: end;
 	color: black;
@@ -91,6 +93,7 @@ body {
 	height: 24px;
 	padding: 10px;
 	font-size: 16px;
+	font-weight: 600;
 	background-color: #fadeae;
 	text-align: end;
 	color: black;

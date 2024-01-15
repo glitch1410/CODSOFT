@@ -1,3 +1,7 @@
+html {
+	scroll-behavior: smooth;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -42,6 +46,7 @@ section {
 .navbar a {
 	text-decoration: none;
 	color: #CAF0F8;	
+	transition: color 0.3s ease-in-out; 
 }
 
 .logo {
@@ -56,9 +61,13 @@ section {
 	font-size: 36px;
 }
 
+a:hover {
+	color: #66ff8a;
+}
+
 /* First section */
 .home {
-	height: 500px;
+	height: 600px;
 	padding: 20px;
 	display: flex;
 	font-size: 40px;
@@ -69,6 +78,8 @@ section {
 }
 
 .router {
+	min-width: 200px;
+	max-width: 512px;
 	position: relative;
 	z-index: 1;
 }
@@ -100,11 +111,71 @@ section {
 }
 
 /* Second Section */
-.aboutUs {
-	height: 500px;
+.services {
+	height: 660px;
 	padding: 20px;
+	background: linear-gradient(#CAF0F8, #0077B6);
+}
+
+.block-container {
+	height: 200px;
+	display: flex;
+	justify-content: space-around;
+	align-items: stretch;
+	margin-bottom: 10px;
+}
+
+.block {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 33.33333%;
+}
+
+.image-container {
+	width: 125px;
+	height: 125px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(#0077B6,#48CAE4);
+	box-shadow: 5px 5px 5px #cfcfcf,
+				5px -5px 5px #cfcfcf,
+				-5px -5px 5px #cfcfcf,
+				-5px 5px 5px #cfcfcf;
+	border-radius: 25px;
+}
+
+.image-container img {
+	width: 80%; 
+	height: 80%; 
+	object-fit: cover; 
+}
+
+.text-container {
+	margin-top: 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: linear-gradient(#CAF0F8, #0077B6);
+	height: 30px;
+	width: 300px;
+	font-size: 24px;
+	font-weight: 700;
+	overflow: hidden;
+}
+
+
+
+/* Footer */
+footer {
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	font-weight: 800;
+	color: #fff;
+	background-color: #2a2a2a;
 }
